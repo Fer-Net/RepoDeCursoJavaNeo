@@ -18,25 +18,8 @@ public class Tarea {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))
                 .build();
-
-        try {
-            // Obtener la respuesta en formato JSON
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-            // Analizar la respuesta JSON a un objeto Java utilizando jackson
-    		ObjectMapper objectMapper = new ObjectMapper();
-
-    		
-    		Repositorio repositoryInfo = objectMapper.readValue(response.body(),Repositorio.class);
-
-            // Imprimir información del repositorio
-            System.out.println("Nombre del Repositorio: " + repositoryInfo.getName());
-            System.out.println("Descripción: " + repositoryInfo.getDescription());
-            System.out.println("URL del Repositorio: " + repositoryInfo.getHtml_url());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+     
     }
 }
 
